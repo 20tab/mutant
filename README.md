@@ -1,4 +1,4 @@
-django-mutant
+mutant
 =============
 
 Mutant is a module to transform your html template in a pdf file in a simple way.<br/>
@@ -16,7 +16,7 @@ First af all you have to configure config.py in mutant package.
 from mutant.views import pdf_to_response
 
 def home(request): 
-    html= "/path_to_source_file/filename.html"
+    html= "template_name.html" #or external link like 'www.google.com'. In this case you have to set ext_url = True in pdf_to_response
     dest = "/path_to_destination_file/filename.pdf"
     
     return pdf_to_response(request,html,dest)
