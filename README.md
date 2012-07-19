@@ -1,7 +1,7 @@
 mutant
 =============
 
-Mutant is a module to transform your html template in a pdf file in a simple way.<br/>
+Mutant is a django application to transform your html template or external link in a pdf file in a simple way.<br/>
 Mutant has some dependences:<br/>
 1) You have to install wkhtmltopdf. You can find it at: http://code.google.com/p/wkhtmltopdf/<br/>
 2) You have to install pyzmq. For more informations look at: https://github.com/zeromq/pyzmq<br/>
