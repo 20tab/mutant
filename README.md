@@ -15,7 +15,7 @@ First af all you have to configure config.py in mutant package.
 ``` py
 from mutant.views import pdf_to_response
 
-def home(request): 
+def myview(request): 
     html= "template_name.html" #or external link like 'www.google.com'. In this case you have to set ext_url = True in pdf_to_response
     dest = "/path_to_destination_file/filename.pdf"
     
