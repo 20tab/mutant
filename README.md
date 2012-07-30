@@ -12,6 +12,14 @@ Mutant has some dependences:<br/>
 
 First af all you have to configure config.py in mutant package.
 
+Then, set uwsgi parameters in your ini configuration:
+
+``` ini
+import = mutant
+mule = 1
+
+```
+
 ``` py
 from mutant.views import pdf_to_response
 
