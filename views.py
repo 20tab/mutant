@@ -17,12 +17,12 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
     - save_as: if True, response is a file to save on your pc 
     - ext_url: if True there isn't template to render but an external link.
     """
-    fp = None
     if not ext_url:
-        rendered = render_to_string(html,vars_dict)
-        with open('temp.html','w+') as fp:
-            fp.write(rendered)
-            html = os.path.abspath('temp.html')
+        html = render_local_file(html,vars_dict,'body')
+        if header != '':
+            header = render_local_file(header,vars_dict,'header')
+        if footer != '':
+            footer = render_local_file(footer,vars_dict,'footer')
     if enqueue(html, output, header, footer, opts):
         data = None
         with open(output, "rb") as f:
@@ -32,10 +32,28 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
         response['Content-Type'] = 'application/pdf'
         if save_as:
             response['Content-Disposition'] = 'attachment; filename=%s' % os.path.basename(output)
-        if fp:
-            os.remove(os.path.abspath('temp.html'))
+        remove_all(html,header,footer,ext_url)
         return response
     else:
-        if fp:
-            os.remove(os.path.abspath('temp.html'))
+        remove_all(html,header,footer,ext_url)
         return HttpResponse("Warning!! Something was wrong in mutant.views.pdf_to_response")
+
+def render_local_file(html,vars_dict,tpl_type):
+    rendered = render_to_string(html,vars_dict)
+    with open('%s.html' % tpl_type,'w+') as fp:
+        fp.write(rendered)
+    print "\n\n%s.html" % tpl_type
+    return os.path.abspath('%s.html' % tpl_type)
+
+def remove_temp_file(temp_file):
+    if os.path.exists(temp_file):
+        os.remove(temp_file)
+
+def remove_all(html,header,footer,ext_url):
+    if not ext_url:
+        if html:
+            remove_temp_file(html)
+        if header:
+            remove_temp_file(header)
+        if footer:
+            remove_temp_file(header)
