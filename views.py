@@ -56,4 +56,4 @@ def remove_all(html,header,footer,ext_url):
         if header:
             remove_temp_file(header)
         if footer:
-            remove_temp_file(header)
+            remove_temp_file(footer)
