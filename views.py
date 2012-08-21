@@ -42,7 +42,6 @@ def render_local_file(html,vars_dict,tpl_type):
     rendered = render_to_string(html,vars_dict)
     with open('%s.html' % tpl_type,'w+') as fp:
         fp.write(rendered)
-    print "\n\n%s.html" % tpl_type
     return os.path.abspath('%s.html' % tpl_type)
 
 def remove_temp_file(temp_file):
