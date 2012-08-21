@@ -10,6 +10,14 @@ from uwsgidecorators import *
 import zmq
 import subprocess
 from mutant import config
+import os,sys
+
+if not os.path.exists(config.WKHTMLTOPDF):
+    print "Mutant is badly configured: WKHTMLTOPDF = '%s'\n%s doesn't exists" % (config.WKHTMLTOPDF,config.WKHTMLTOPDF)
+    sys.exit()
+if not os.path.exists(config.SOCKET_PATH):
+    print "Mutant is badly configured: SOCKET_PATH = '%s'\n%s doesn't exists" % (config.SOCKET_PATH,config.SOCKET_PATH)
+    sys.exit()
 
 VERSION = (0,0,1)
 __version__ = '.'.join(map(str, VERSION))
