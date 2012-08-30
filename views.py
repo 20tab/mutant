@@ -17,6 +17,7 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
     - save_as: if True, response is a file to save on your pc 
     - ext_url: if True there isn't template to render but an external link.
     """
+    output = os.path.abspath(output)
     if not ext_url:
         html = render_local_file(html,vars_dict,'body')
         if header != '':
