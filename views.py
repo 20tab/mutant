@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 import os
 
-def pdf_to_response(request,html, output, header='', footer='', opts='', vars_dict = {}, save_as = False, ext_url = False):
+def pdf_to_response(request,html, output, header='', footer='', opts='', vars_dict = {}, save_as = False, ext_url = False, filename=None):
     """
     It returns a response as pdf attached file. It accepts following parameters:
     - request: simply http request
@@ -31,8 +31,12 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
         response = HttpResponse(data, mimetype='application/pdf')
         response['X-Sendfile'] = output
         response['Content-Type'] = 'application/pdf'
+        
+        if not filename:
+            filename = output
+        response['Content-Disposition'] = 'inline; filename=%s' % filename
         if save_as:
-            response['Content-Disposition'] = 'attachment; filename=%s' % os.path.basename(output)
+            response['Content-Disposition'] = 'attachment; filename=%s' % filename
         remove_all(html,header,footer,ext_url)
         return response
     else:
