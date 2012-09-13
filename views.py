@@ -1,6 +1,7 @@
 from mutant import enqueue
 from django.http import HttpResponse
 from django.template.loader import render_to_string
+from django.utils.encoding import smart_str
 import os
 
 def pdf_to_response(request,html, output, header='', footer='', opts='', vars_dict = {}, save_as = False, ext_url = False, filename=None):
@@ -16,6 +17,7 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
     - vars_dict: it's a dictionary containing all context variables used in your template
     - save_as: if True, response is a file to save on your pc 
     - ext_url: if True there isn't template to render but an external link.
+    - filename: it's the assigned name to pdf file
     """
     output = os.path.abspath(output)
     if not ext_url:
@@ -44,7 +46,7 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
         return HttpResponse("Warning!! Something was wrong in mutant.views.pdf_to_response")
 
 def render_local_file(html,vars_dict,tpl_type):
-    rendered = render_to_string(html,vars_dict)
+    rendered = smart_str(render_to_string(html,vars_dict))
     with open('%s.html' % tpl_type,'w+') as fp:
         fp.write(rendered)
     return os.path.abspath('%s.html' % tpl_type)
