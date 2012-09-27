@@ -9,7 +9,7 @@ Mutant has some dependences:<br/>
 4) Obviously it's a django application, so...<br/>
 <br/>
 <i>Remember: to use special characters you must include in your template following meta information:<br/>
-<b><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></b></i>
+<b><quote><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></quote></b></i>
 
 ## Usage
 
