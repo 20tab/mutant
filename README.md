@@ -7,6 +7,9 @@ Mutant has some dependences:<br/>
 2) You have to install pyzmq. For more informations look at: https://github.com/zeromq/pyzmq<br/>
 3) It works only with uWSGI application server and its documentation is here: http://projects.unbit.it/uwsgi/<br/>
 4) Obviously it's a django application, so...<br/>
+<br/>
+<i>Remember: to use special characters you must include in your template following meta information:<br/>
+<b><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></b></i>
 
 ## Usage
 
