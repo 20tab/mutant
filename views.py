@@ -21,11 +21,11 @@ def pdf_to_response(request,html, output, header='', footer='', opts='', vars_di
     """
     output = os.path.abspath(output)
     if not ext_url:
-        html = u"%s" % render_local_file(html,vars_dict,'body')
+        html = render_local_file(html,vars_dict,'body')
         if header != '':
-            header = u"%s" % render_local_file(header,vars_dict,'header')
+            header = render_local_file(header,vars_dict,'header')
         if footer != '':
-            footer = u"%s" % render_local_file(footer,vars_dict,'footer')
+            footer = render_local_file(footer,vars_dict,'footer')
     if enqueue(html, output, header, footer, opts):
         data = None
         with open(output, "rb") as f:
