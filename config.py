@@ -1,7 +1,7 @@
 """
 This is the configuration file. It's necessary to set following parameters.
 """
-WKHTMLTOPDF='/path_to/wkhtmltopdf-i386'
+WKHTMLTOPDF='/path_to/wkhtmltopdf-bin'
 """
 It's the path of binary wkhtmltopdf file. It's necessary for the correct mutant work
 """
