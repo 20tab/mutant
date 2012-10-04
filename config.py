@@ -1,11 +1,11 @@
 """
 This is the configuration file. It's necessary to set following parameters.
 """
-WKHTMLTOPDF='/proc/unbit/bin/wkhtmltopdf-i386'
+WKHTMLTOPDF='/path_to/wkhtmltopdf-i386'
 """
 It's the path of binary wkhtmltopdf file. It's necessary for the correct mutant work
 """
-SOCKET_PATH='/proc/unbit/www/20tab_com/project/mutant.socket'
+SOCKET_PATH='/path_to/mutant.socket'
 """
 It's the socket that will process all tasks. It's important that socket file exists.
 """
